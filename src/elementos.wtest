@@ -1,0 +1,6 @@
+
+test "testX" {
+// en foto
+	assert.that(true)
+
+}

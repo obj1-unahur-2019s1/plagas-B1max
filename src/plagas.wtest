@@ -1,0 +1,44 @@
+import plagas.*
+import Hogar.*
+import Huerta.*
+import Mascota.*
+test "Cucaracha" {
+	var cucas = new Cucarachas()
+	cucas.poblacion(10)
+	cucas.pesoPromedio(10)
+	var casa = new Hogar()
+	casa.nivelMugre(50)
+	
+	assert.that(cucas.transmiteEnfermedades())
+	cucas.poblacion(9)
+	cucas.pesoPromedio(9)
+	assert.notThat(cucas.transmiteEnfermedades())
+	cucas.poblacion(100)
+	cucas.pesoPromedio(100)
+	assert.equals(50,cucas.nivelDanio())
+	cucas.atacar(casa)
+	assert.equals(102,cucas.pesoPromedio())
+	
+}
+test "Garrapatas"{
+	var casa = new Hogar()
+	casa.nivelMugre(50)
+	var garra = new Garrapata()
+	garra.poblacion(100)
+	garra.atacar(casa)
+	assert.equals(120,garra.poblacion())
+}
+test "Mosquitos"{
+	var mosqui = new Mosquito()
+	mosqui.poblacion(24)
+	assert.that(mosqui.transmiteEnfermedades())
+	assert.equals(24,mosqui.nivelDanio())
+}
+test"Pulgas"{
+	var casa = new Hogar()
+	casa.nivelMugre(50)
+	var pulguita = new Pulgas()
+	pulguita.poblacion(100)
+	pulguita.atacar(casa)
+	assert.equals(120,pulguita.poblacion())
+}
